@@ -92,8 +92,10 @@ async function processRequest(originalRequest, event) {
 		if (cfCacheStatus) {
 			response.headers.set('CF-Cache-Status', cfCacheStatus);
 		}
-		// Thêm header để kiểm tra trạng thái worker
+		// Header báo hiệu Worker đang hoạt động
 		response.headers.set('x-worker-health', 'active');
+		// Header bổ sung cho biết nguồn request: "cache" nếu có cache hit, ngược lại "origin"
+		response.headers.set('x-cache-source', cfCacheStatus === 'HIT' ? 'cache' : 'origin');
 	}
 
 	return response;

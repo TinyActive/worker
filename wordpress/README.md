@@ -72,6 +72,7 @@ Sau khi đã cấu hình đầy đủ:
   Mỗi response HTML thành công sẽ có thêm header:
   ```http
   x-worker-health: active
+  x-cache-source: cache
   ```
   Bạn có thể dùng header này để kiểm tra xem Worker có đang hoạt động hay không.
 
